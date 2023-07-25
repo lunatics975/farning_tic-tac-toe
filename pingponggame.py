@@ -4,7 +4,7 @@ import arcade
 SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 1000
 SCREEN_TITLE = "TicTacToe"
-SPRITE_SCALING_PLAYER = 0.25
+SPRITE_SCALING_PLAYER = 3
 
 
 class MyGame(arcade.Window):
@@ -23,6 +23,11 @@ class MyGame(arcade.Window):
         self.player_sprite_kreuz = None
         self.score_circle = 0
         self.score_kreuz = 0
+        self.circle_number = 1
+        self.kreuz_number = 1
+        self.kreuz_winlist = []
+        self.circle_winlist = []
+        self.player_turn = 1
 
         #setmousevisibility
         self.set_mouse_visible(True)
@@ -39,6 +44,8 @@ class MyGame(arcade.Window):
         # Score
         self.score_circle = 0
         self.score_kreuz = 0
+        self.circle_number = 1
+        self.kreuz_number = 1
 
         # Character image from kenney.nl
         #kreis images
@@ -114,114 +121,531 @@ class MyGame(arcade.Window):
             if x < 333:
                 if 999 > y > 666:
                     if self.player_turn == 1:
-                       self.player_sprite_circle.center_x = 166
-                       self.player_sprite_circle.center_y = 832
-                       print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
-                       self.player_turn == 0
+                        if self.circle_number == 1:
+                            self.player_sprite_circle1.center_x = 166
+                            self.player_sprite_circle1.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 2:
+                            self.player_sprite_circle2.center_x = 166
+                            self.player_sprite_circle2.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 3:
+                            self.player_sprite_circle3.center_x = 166
+                            self.player_sprite_circle3.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 4:
+                            self.player_sprite_circle4.center_x = 166
+                            self.player_sprite_circle4.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        else:
+                            self.player_sprite_circle5.center_x = 166
+                            self.player_sprite_circle5.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
 
                     else:
-                        self.player_sprite_kreuz.center_x = 166
-                        self.player_sprite_kreuz.center_y = 832
-                        print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
-                        self.player_turn = 1
+                        if self.kreuz_number == 1:
+                            self.player_sprite_kreuz1.center_x = 166
+                            self.player_sprite_kreuz1.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 2:
+                            self.player_sprite_kreuz2.center_x = 166
+                            self.player_sprite_kreuz2.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 3:
+                            self.player_sprite_kreuz3.center_x = 166
+                            self.player_sprite_kreuz3.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        else:
+                            self.player_sprite_kreuz4.center_x = 166
+                            self.player_sprite_kreuz4.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
 
                 if 666 > y > 333:
                     if self.player_turn == 1:
-                        self.player_sprite_circle.center_x = 166
-                        self.player_sprite_circle.center_y = 499
-                        print("Left mouse button pressed at", x, y, "mittlere Reihe links", "circle")
-                        self.player_turn = 0
+                        if self.circle_number == 1:
+                            self.player_sprite_circle1.center_x = 166
+                            self.player_sprite_circle1.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 2:
+                            self.player_sprite_circle2.center_x = 166
+                            self.player_sprite_circle2.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 3:
+                            self.player_sprite_circle3.center_x = 166
+                            self.player_sprite_circle3.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 4:
+                            self.player_sprite_circle4.center_x = 166
+                            self.player_sprite_circle4.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        else:
+                            self.player_sprite_circle5.center_x = 166
+                            self.player_sprite_circle5.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
                     else:
-                        self.player_sprite_kreuz.center_x = 166
-                        self.player_sprite_kreuz.center_y = 499
-                        print("Left mouse button pressed at", x, y, "mittlere Reihe links", "kreuz")
-                        self.player_turn = 1
+                        if self.kreuz_number == 1:
+                            self.player_sprite_kreuz1.center_x = 166
+                            self.player_sprite_kreuz1.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 2:
+                            self.player_sprite_kreuz2.center_x = 166
+                            self.player_sprite_kreuz2.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 3:
+                            self.player_sprite_kreuz3.center_x = 166
+                            self.player_sprite_kreuz3.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        else:
+                            self.player_sprite_kreuz4.center_x = 166
+                            self.player_sprite_kreuz4.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
 
                 if 333 > y > 0:
                     if self.player_turn == 1:
-                        self.player_sprite_circle.center_x = 166
-                        self.player_sprite_circle.center_y = 166
-                        print("Left mouse button pressed at", x, y, "unterste Reihe links", "circle")
-                        self.player_turn = 0
+                        if self.circle_number == 1:
+                            self.player_sprite_circle1.center_x = 166
+                            self.player_sprite_circle1.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 2:
+                            self.player_sprite_circle2.center_x = 166
+                            self.player_sprite_circle2.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 3:
+                            self.player_sprite_circle3.center_x = 166
+                            self.player_sprite_circle3.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 4:
+                            self.player_sprite_circle4.center_x = 166
+                            self.player_sprite_circle4.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        else:
+                            self.player_sprite_circle5.center_x = 166
+                            self.player_sprite_circle5.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+
                     else:
-                        self.player_sprite_kreuz.center_x = 166
-                        self.player_sprite_kreuz.center_y = 166
-                        print("Left mouse button pressed at", x, y, "unterste Reihe links", "kreuz")
-                        self.player_turn = 1
+                        if self.kreuz_number == 1:
+                            self.player_sprite_kreuz1.center_x = 166
+                            self.player_sprite_kreuz1.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 2:
+                            self.player_sprite_kreuz2.center_x = 166
+                            self.player_sprite_kreuz2.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 3:
+                            self.player_sprite_kreuz3.center_x = 166
+                            self.player_sprite_kreuz3.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        else:
+                            self.player_sprite_kreuz4.center_x = 166
+                            self.player_sprite_kreuz4.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+
 
             if 333 < x < 666:
                 if 999 > y > 666:
                     if self.player_turn == 1:
-                        self.player_sprite_circle.center_x = 499
-                        self.player_sprite_circle.center_y = 832
-                        print("Left mouse button pressed at", x, y, "oberste Reihe mitte")
-                        self.player_turn = 0
+                        if self.circle_number == 1:
+                            self.player_sprite_circle1.center_x = 499
+                            self.player_sprite_circle1.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 2:
+                            self.player_sprite_circle2.center_x = 499
+                            self.player_sprite_circle2.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 3:
+                            self.player_sprite_circle3.center_x = 499
+                            self.player_sprite_circle3.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 4:
+                            self.player_sprite_circle4.center_x = 499
+                            self.player_sprite_circle4.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        else:
+                            self.player_sprite_circle5.center_x = 499
+                            self.player_sprite_circle5.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
                     else:
-                        self.player_sprite_kreuz.center_x = 499
-                        self.player_sprite_kreuz.center_y = 832
-                        print("Left mouse button pressed at", x, y, "oberste Reihe mitte", "kreuz")
-                        self.player_turn = 1
+                        if self.kreuz_number == 1:
+                            self.player_sprite_kreuz1.center_x = 499
+                            self.player_sprite_kreuz1.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 2:
+                            self.player_sprite_kreuz2.center_x = 499
+                            self.player_sprite_kreuz2.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 3:
+                            self.player_sprite_kreuz3.center_x = 499
+                            self.player_sprite_kreuz3.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        else:
+                            self.player_sprite_kreuz4.center_x = 499
+                            self.player_sprite_kreuz4.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
 
                 if 666 > y > 333:
                     if self.player_turn == 1:
-                        self.player_sprite_circle.center_x = 499
-                        self.player_sprite_circle.center_y = 499
-                        print("Left mouse button pressed at", x, y, "mittlere Reihe mitte", "circle")
-                        self.player_turn = 0
+                        if self.circle_number == 1:
+                            self.player_sprite_circle1.center_x = 499
+                            self.player_sprite_circle1.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 2:
+                            self.player_sprite_circle2.center_x = 499
+                            self.player_sprite_circle2.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 3:
+                            self.player_sprite_circle3.center_x = 499
+                            self.player_sprite_circle3.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 4:
+                            self.player_sprite_circle4.center_x = 499
+                            self.player_sprite_circle4.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        else:
+                            self.player_sprite_circle5.center_x = 499
+                            self.player_sprite_circle5.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
                     else:
-                        self.player_sprite_kreuz.center_x = 499
-                        self.player_sprite_kreuz.center_y = 499
-                        print("Left mouse button pressed at", x, y, "mittlere Reihe mitte", "kreuz")
-                        self.player_turn = 1
+                        if self.kreuz_number == 1:
+                            self.player_sprite_kreuz1.center_x = 499
+                            self.player_sprite_kreuz1.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 2:
+                            self.player_sprite_kreuz2.center_x = 499
+                            self.player_sprite_kreuz2.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 3:
+                            self.player_sprite_kreuz3.center_x = 499
+                            self.player_sprite_kreuz3.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        else:
+                            self.player_sprite_kreuz4.center_x = 499
+                            self.player_sprite_kreuz4.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
 
                 if 333 > y > 0:
                     if self.player_turn == 1:
-                        self.player_sprite_circle.center_x = 499
-                        self.player_sprite_circle.center_y = 166
-                        print("Left mouse button pressed at", x, y, "unterste Reihe mitte", "circle")
-                        self.player_turn = 0
+                        if self.circle_number == 1:
+                            self.player_sprite_circle1.center_x = 499
+                            self.player_sprite_circle1.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 2:
+                            self.player_sprite_circle2.center_x = 499
+                            self.player_sprite_circle2.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 3:
+                            self.player_sprite_circle3.center_x = 499
+                            self.player_sprite_circle3.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 4:
+                            self.player_sprite_circle4.center_x = 499
+                            self.player_sprite_circle4.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        else:
+                            self.player_sprite_circle5.center_x = 499
+                            self.player_sprite_circle5.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
                     else:
-                        self.player_sprite_kreuz.center_x = 499
-                        self.player_sprite_kreuz.center_y = 166
-                        print("Left mouse button pressed at", x, y, "unterste Reihe mitte", "kreuz")
-                        self.player_turn = 1
+                        if self.kreuz_number == 1:
+                            self.player_sprite_kreuz1.center_x = 499
+                            self.player_sprite_kreuz1.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 2:
+                            self.player_sprite_kreuz2.center_x = 499
+                            self.player_sprite_kreuz2.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 3:
+                            self.player_sprite_kreuz3.center_x = 499
+                            self.player_sprite_kreuz3.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        else:
+                            self.player_sprite_kreuz4.center_x = 499
+                            self.player_sprite_kreuz4.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
 
             if 666 < x < 999:
                 if 999 > y > 666:
                     if self.player_turn == 1:
-                        self.player_sprite_circle.center_x = 832
-                        self.player_sprite_circle.center_y = 832
-                        print("Left mouse button pressed at", x, y, "oberste Reihe rechts", "circle")
-                        self.player_turn = 0
+                        if self.circle_number == 1:
+                            self.player_sprite_circle1.center_x = 832
+                            self.player_sprite_circle1.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 2:
+                            self.player_sprite_circle2.center_x = 832
+                            self.player_sprite_circle2.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 3:
+                            self.player_sprite_circle3.center_x = 832
+                            self.player_sprite_circle3.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 4:
+                            self.player_sprite_circle4.center_x = 832
+                            self.player_sprite_circle4.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        else:
+                            self.player_sprite_circle5.center_x = 832
+                            self.player_sprite_circle5.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
                     else:
-                        self.player_sprite_kreuz.center_x = 832
-                        self.player_sprite_kreuz.center_y = 832
-                        print("Left mouse button pressed at", x, y, "oberste Reihe rechts", "kreuz")
-                        self.player_turn = 1
+                        if self.kreuz_number == 1:
+                            self.player_sprite_kreuz1.center_x = 832
+                            self.player_sprite_kreuz1.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 2:
+                            self.player_sprite_kreuz2.center_x = 832
+                            self.player_sprite_kreuz2.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 3:
+                            self.player_sprite_kreuz3.center_x = 832
+                            self.player_sprite_kreuz3.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        else:
+                            self.player_sprite_kreuz4.center_x = 832
+                            self.player_sprite_kreuz4.center_y = 832
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+
 
                 if 666 > y > 333:
                     if self.player_turn == 1:
-                        self.player_sprite_circle.center_x = 832
-                        self.player_sprite_circle.center_y = 499
-                        print("Left mouse button pressed at", x, y, "mittlere Reihe rechts", "circle")
-                        self.player_turn = 0
+                        if self.circle_number == 1:
+                            self.player_sprite_circle1.center_x = 832
+                            self.player_sprite_circle1.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 2:
+                            self.player_sprite_circle2.center_x = 832
+                            self.player_sprite_circle2.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 3:
+                            self.player_sprite_circle3.center_x = 832
+                            self.player_sprite_circle3.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 4:
+                            self.player_sprite_circle4.center_x = 832
+                            self.player_sprite_circle4.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        else:
+                            self.player_sprite_circle5.center_x = 832
+                            self.player_sprite_circle5.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
                     else:
-                        self.player_sprite_kreuz.center_x = 832
-                        self.player_sprite_kreuz.center_y = 499
-                        print("Left mouse button pressed at", x, y, "mittlere Reihe rechts", "kreuz")
-                        self.player_turn = 1
+                        if self.kreuz_number == 1:
+                            self.player_sprite_kreuz1.center_x = 832
+                            self.player_sprite_kreuz1.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 2:
+                            self.player_sprite_kreuz2.center_x = 832
+                            self.player_sprite_kreuz2.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 3:
+                            self.player_sprite_kreuz3.center_x = 832
+                            self.player_sprite_kreuz3.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        else:
+                            self.player_sprite_kreuz4.center_x = 832
+                            self.player_sprite_kreuz4.center_y = 499
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
 
                 if 333 > y > 0:
                     if  self.player_turn == 1:
-                        self.player_sprite_circle.center_x = 832
-                        self.player_sprite_circle.center_y = 166
-                        print("Left mouse button pressed at", x, y, "unterste Reihe rechts", "circle")
-                        self.player_turn = 0
+                        if self.circle_number == 1:
+                            self.player_sprite_circle1.center_x = 832
+                            self.player_sprite_circle1.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 2:
+                            self.player_sprite_circle2.center_x = 832
+                            self.player_sprite_circle2.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 3:
+                            self.player_sprite_circle3.center_x = 832
+                            self.player_sprite_circle3.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        elif self.circle_number == 4:
+                            self.player_sprite_circle4.center_x = 832
+                            self.player_sprite_circle4.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
+                        else:
+                            self.player_sprite_circle5.center_x = 832
+                            self.player_sprite_circle5.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "circle")
+                            self.circle_number += 1
+                            self.player_turn = 0
                     else:
-                        self.player_sprite_kreuz.center_x = 832
-                        self.player_sprite_kreuz.center_y = 166
-                        print("Left mouse button pressed at", x, y, "unterste Reihe rechts", "kreuz")
-                        self.player_turn = 1
+                        if self.kreuz_number == 1:
+                            self.player_sprite_kreuz1.center_x = 832
+                            self.player_sprite_kreuz1.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 2:
+                            self.player_sprite_kreuz2.center_x = 832
+                            self.player_sprite_kreuz2.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        elif self.kreuz_number == 3:
+                            self.player_sprite_kreuz3.center_x = 832
+                            self.player_sprite_kreuz3.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
+                        else:
+                            self.player_sprite_kreuz4.center_x = 832
+                            self.player_sprite_kreuz4.center_y = 166
+                            print("Left mouse button pressed at", x, y, "oberste Reihe links", "kreuz")
+                            self.kreuz_number += 1
+                            self.player_turn = 1
 
 
             elif button == arcade.MOUSE_BUTTON_RIGHT:
